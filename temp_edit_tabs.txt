@@ -1,0 +1,18 @@
+            <TabsList className="w-full mb-6 bg-white/80 backdrop-blur-sm border border-gray-100 rounded-xl p-1">
+              <TabsTrigger value="brain" className="flex-1 gap-2 rounded-lg py-3">
+                <Brain size={16} />
+                תצוגת מוח
+              </TabsTrigger>
+              <TabsTrigger value="tags" className="flex-1 gap-2 rounded-lg py-3">
+                <Tag size={16} />
+                תצוגת תגיות
+              </TabsTrigger>
+              <TabsTrigger value="table" className="flex-1 gap-2 rounded-lg py-3">
+                <Table size={16} />
+                תצוגת טבלה
+              </TabsTrigger>
+              <TabsTrigger value="heatmap" className="flex-1 gap-2 rounded-lg py-3">
+                <Calendar size={16} />
+                תצוגת חום
+              </TabsTrigger>
+            </TabsList>

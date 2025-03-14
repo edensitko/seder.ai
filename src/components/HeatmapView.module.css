@@ -1,0 +1,19 @@
+.heatmap :global(.color-empty) { 
+  fill: #f3f4f6; 
+}
+
+.heatmap :global(.color-scale-1) { 
+  fill: #ddd6fe; 
+}
+
+.heatmap :global(.color-scale-2) { 
+  fill: #c4b5fd; 
+}
+
+.heatmap :global(.color-scale-3) { 
+  fill: #a78bfa; 
+}
+
+.heatmap :global(.color-scale-4) { 
+  fill: #7c3aed; 
+}

@@ -1,0 +1,65 @@
+            </Tabs>
+            
+            {/* היסטוריית מחשבות - מוצג מתחת לטאבים */}
+            <div className="mt-8 bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-100 shadow-lg p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-800">היסטוריית מחשבות</h3>
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <Clock size={16} className="text-indigo-600" />
+                  <span>{savedThoughts.length} מחשבות</span>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {savedThoughts.map(thought => (
+                  <div 
+                    key={thought.id}
+                    className={`p-4 bg-white border rounded-xl cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-1 ${
+                      thought.id === currentThoughtId 
+                        ? 'border-indigo-200 shadow-md shadow-indigo-100/50' 
+                        : 'border-gray-100'
+                    }`}
+                    onClick={() => handleSelectThought(thought.id)}
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <div className="text-xs text-gray-500 font-medium">
+                        {thought.date}
+                      </div>
+                      {thought.id === currentThoughtId && (
+                        <div className="text-xs bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full">
+                          נוכחי
+                        </div>
+                      )}
+                    </div>
+                    <div className="line-clamp-2 text-sm text-gray-800 mb-3">
+                      {thought.text}
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap gap-1">
+                        {thought.analysis.themes.slice(0, 2).map((theme, i) => (
+                          <span 
+                            key={i} 
+                            className="inline-block text-xs bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full"
+                          >
+                            {theme}
+                          </span>
+                        ))}
+                        {thought.analysis.themes.length > 2 && (
+                          <span className="text-xs text-gray-500">+{thought.analysis.themes.length - 2}</span>
+                        )}
+                      </div>
+                      <button 
+                        className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectThought(thought.id);
+                        }}
+                      >
+                        <span>פרטים</span>
+                        <ChevronLeft size={14} />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>

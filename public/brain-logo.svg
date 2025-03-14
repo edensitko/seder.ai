@@ -1,0 +1,42 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brain Base -->
+  <path d="M100 180C144.183 180 180 144.183 180 100C180 55.8172 144.183 20 100 20C55.8172 20 20 55.8172 20 100C20 144.183 55.8172 180 100 180Z" fill="url(#paint0_radial)" />
+  
+  <!-- Left Hemisphere -->
+  <path d="M95 40C80 40 65 50 60 65C55 80 60 95 70 105C75 110 80 115 85 120C90 125 95 130 95 140" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" />
+  <path d="M70 70C60 75 55 85 60 95C65 105 75 110 85 105" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" />
+  <path d="M75 100C65 105 60 115 65 125C70 135 80 140 90 135" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Right Hemisphere -->
+  <path d="M105 40C120 40 135 50 140 65C145 80 140 95 130 105C125 110 120 115 115 120C110 125 105 130 105 140" stroke="#6366F1" stroke-width="6" stroke-linecap="round" />
+  <path d="M130 70C140 75 145 85 140 95C135 105 125 110 115 105" stroke="#6366F1" stroke-width="6" stroke-linecap="round" />
+  <path d="M125 100C135 105 140 115 135 125C130 135 120 140 110 135" stroke="#6366F1" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Cerebellum -->
+  <path d="M85 145C85 155 90 165 100 165C110 165 115 155 115 145" stroke="#A78BFA" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Connecting Line -->
+  <path d="M100 40V140" stroke="#C4B5FD" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 4" />
+  
+  <!-- Nodes/Synapses -->
+  <circle cx="70" cy="70" r="5" fill="#DDD6FE" />
+  <circle cx="75" cy="100" r="5" fill="#DDD6FE" />
+  <circle cx="85" cy="105" r="5" fill="#DDD6FE" />
+  <circle cx="90" cy="135" r="5" fill="#DDD6FE" />
+  <circle cx="130" cy="70" r="5" fill="#C7D2FE" />
+  <circle cx="125" cy="100" r="5" fill="#C7D2FE" />
+  <circle cx="115" cy="105" r="5" fill="#C7D2FE" />
+  <circle cx="110" cy="135" r="5" fill="#C7D2FE" />
+  <circle cx="100" cy="40" r="5" fill="#EDE9FE" />
+  <circle cx="100" cy="140" r="5" fill="#EDE9FE" />
+  <circle cx="85" cy="145" r="5" fill="#EDE9FE" />
+  <circle cx="115" cy="145" r="5" fill="#EDE9FE" />
+  
+  <!-- Gradient Definitions -->
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 100) rotate(90) scale(80)">
+      <stop stop-color="white" />
+      <stop offset="1" stop-color="#F5F3FF" />
+    </radialGradient>
+  </defs>
+</svg>

@@ -1,0 +1,9 @@
+[data-state='active'] {
+  background-color: rgb(243 232 255);
+  color: rgb(88 28 135);
+}
+
+[data-state='inactive'] {
+  background-color: transparent;
+  color: rgb(107 114 128);
+}

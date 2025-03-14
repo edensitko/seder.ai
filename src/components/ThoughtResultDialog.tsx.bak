@@ -1,0 +1,158 @@
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import ThoughtAnalysis from "./ThoughtAnalysis";
+import { Button } from "@/components/ui/button";
+import { X, Edit, RefreshCw, Save, Check, MessageSquarePlus } from "lucide-react";
+
+interface ThoughtResultDialogProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+  result: {
+    summary: string;
+    themes: string[];
+    categories: {
+      tasks: string[];
+      ideas: string[];
+      goals: string[];
+      reflections: string[];
+      decisions: string[];
+    };
+    nextSteps: {
+      tasks: string[];
+      ideas: string[];
+      goals: string[];
+      reflections: string[];
+      decisions: string[];
+    };
+    advice: string;
+  } | null;
+  currentThought?: string;
+  onEditThought?: (editedThought: string) => void;
+  onReanalyzeThought?: () => void;
+}
+
+const ThoughtResultDialog: React.FC<ThoughtResultDialogProps> = ({
+  isOpen,
+  onOpenChange,
+  result,
+  currentThought = "",
+  onEditThought,
+  onReanalyzeThought,
+}) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedThought, setEditedThought] = useState(currentThought);
+
+  if (!result) return null;
+
+  const handleSaveEdit = () => {
+    if (onEditThought && editedThought.trim()) {
+      onEditThought(editedThought);
+    }
+    setIsEditing(false);
+  };
+
+  const handleReanalyze = () => {
+    if (onReanalyzeThought) {
+      onReanalyzeThought();
+    }
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-md rounded-xl border-none shadow-lg p-0 overflow-hidden">
+        <DialogHeader className="bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-3 border-b">
+          <div className="flex items-center justify-between">
+            <DialogTitle className="text-base font-medium text-indigo-700">תוצאות הניתוח</DialogTitle>
+            <DialogClose className="rounded-full p-1 hover:bg-black/5 transition-colors">
+              <X size={16} className="text-gray-500" />
+            </DialogClose>
+          </div>
+        </DialogHeader>
+        
+        {isEditing ? (
+          <div className="p-4 border-b">
+            <textarea
+              value={editedThought}
+              onChange={(e) => setEditedThought(e.target.value)}
+              className="w-full min-h-[100px] p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 resize-none text-right"
+              dir="rtl"
+              placeholder="ערוך את המחשבה שלך כאן..."
+            />
+            <div className="flex justify-end gap-2 mt-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => setIsEditing(false)}
+                className="text-xs"
+              >
+                ביטול
+              </Button>
+              <Button 
+                size="sm" 
+                onClick={handleSaveEdit}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xs flex items-center gap-1"
+              >
+                <Check size={14} />
+                <span>שמור</span>
+              </Button>
+            </div>
+          </div>
+        ) : (
+          currentThought && (
+            <div className="p-4 border-b bg-gray-50/50">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-sm font-medium text-gray-700">המחשבה המקורית:</h3>
+                <button 
+                  onClick={() => setIsEditing(true)}
+                  className="text-xs flex items-center gap-1 text-indigo-600 hover:text-indigo-800"
+                >
+                  <Edit size={14} />
+                  <span>ערוך</span>
+                </button>
+              </div>
+              <p className="text-sm text-gray-700">{currentThought}</p>
+            </div>
+          )
+        )}
+        
+        <div className="max-h-[50vh] overflow-y-auto custom-scrollbar">
+          <ThoughtAnalysis
+            summary={result.summary}
+            themes={result.themes}
+            categories={result.categories}
+            nextSteps={result.nextSteps}
+            advice={result.advice}
+          />
+        </div>
+        
+        <DialogFooter className="bg-gray-50 p-3 border-t flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleReanalyze}
+              className="text-xs flex items-center gap-1"
+              disabled={!onReanalyzeThought}
+            >
+              <RefreshCw size={14} className="text-indigo-600" />
+              <span>בקשה חדשה</span>
+            </Button>
+          </div>
+          
+          <p className="text-xs text-gray-500">
+            המחשבות שלך מאורגנות! לחץ מחוץ לחלון כדי לסגור
+          </p>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+export default ThoughtResultDialog;

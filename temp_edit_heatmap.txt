@@ -1,0 +1,16 @@
+            <TabsContent value="heatmap">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key="heatmap-view"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <HeatmapView 
+                    thoughts={savedThoughts} 
+                    onSelectThought={handleSelectThought}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </TabsContent>
