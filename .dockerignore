@@ -1,0 +1,28 @@
+# Versioning and metadata
+.git
+.gitignore
+.dockerignore
+
+# Build dependencies
+node_modules
+dist
+
+# Environment (contains sensitive data)
+.env
+.env.*
+!.env.example
+
+# Files not required for production
+README.md
+*docker-compose*
+Dockerfile
+.editorconfig
+.eslintrc
+.prettierrc
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.vscode
+.github
+.idea
+.DS_Store
