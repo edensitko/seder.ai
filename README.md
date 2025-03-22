@@ -2,7 +2,7 @@
 
 # 🧠 Seder.ai 🧠
 
-### AI-Powered Thought Organization
+### AI-Powered Thought Organization with Docker
 
 
 *Bringing clarity to your thoughts in the digital age*
@@ -13,7 +13,7 @@
 
 ## ✨ Overview
 
-**Seder.ai** is an innovative web application designed to help you organize your thoughts through AI-powered interactions. The platform provides a modern, interactive way to capture, categorize, and connect your ideas, making it easier to maintain clarity and focus in your thinking process.
+**Seder.ai** is an innovative Docker-based web application designed to help you organize your thoughts through AI-powered interactions. The platform provides a modern, interactive way to capture, categorize, and connect your ideas, making it easier to maintain clarity and focus in your thinking process.
 
 ## 🚀 Features
 
@@ -22,24 +22,24 @@
 - **⚙️ Customizable Experience**: Tailor the organization system to your personal thinking style
 - **🌐 Multilingual Support**: Available in multiple languages to accommodate diverse users
 - **📱 Responsive Design**: Seamless experience across desktop, tablet, and mobile devices
+- **🐳 Docker Integration**: Easy deployment and scaling with containerization
 
 ## 🛠️ Technology Stack
 
 <div align="center">
 
-**React** • **TypeScript** • **Tailwind CSS** • **Node.js** • **Express** • **Docker** • **OpenAI**
+**Docker** • **React** • **TypeScript** • **Tailwind CSS** • **Node.js** • **Express** • **OpenAI**
 
 </div>
 
-## 🚦 Getting Started
+## 🚦 Getting Started with Docker
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Docker and Docker Compose (for containerized deployment)
+- [Docker](https://docs.docker.com/get-docker/) (v20.10 or higher)
+- [Docker Compose](https://docs.docker.com/compose/install/) (v2.0 or higher)
 
-### Local Development
+### Quick Start with Docker
 
 1. **Clone the repository**
    ```bash
@@ -47,33 +47,26 @@
    cd seder.ai
    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Set up environment variables**
+2. **Set up environment variables**
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
-4. **Start the development server**
+3. **Start with Docker Compose**
    ```bash
-   npm run dev
-   # or
-   yarn dev
+   # For production
+   docker-compose up -d
+   
+   # For development with hot reloading
+   docker-compose -f docker-compose.dev.yml up -d
    ```
 
-5. **Open your browser** and navigate to `http://localhost:5173`
+4. **Access the application**
+   - Production: http://localhost:80
+   - Development: http://localhost:5173
 
-### Docker Deployment
-
-<details>
-<summary>📋 Using the Helper Script</summary>
-<br>
+### Docker Helper Script
 
 We've included a helper script to simplify Docker operations:
 
@@ -93,34 +86,16 @@ chmod +x docker-start.sh
 # Stop running containers
 ./docker-start.sh stop
 ```
-</details>
 
-<details>
-<summary>📋 Manual Docker Commands</summary>
-<br>
+### Docker Configuration Files
 
-If you prefer using Docker commands directly:
-
-**Development Mode**
-
-```bash
-# Build and start the development container
-docker-compose -f docker-compose.dev.yml up --build
-
-# Stop the development container
-docker-compose -f docker-compose.dev.yml down
-```
-
-**Production Mode**
-
-```bash
-# Build and start the production container
-docker-compose up --build
-
-# Stop the production container
-docker-compose down
-```
-</details>
+- `Dockerfile` - For building the production image
+- `Dockerfile.dev` - For development with hot reloading
+- `docker-compose.yml` - Docker Compose configuration for production
+- `docker-compose.dev.yml` - Docker Compose configuration for development
+- `docker-start.sh` - Helper script for running Docker commands
+- `nginx.conf` - Nginx configuration for the production environment
+- `.dockerignore` - Files to exclude from Docker builds
 
 ## 📂 Project Structure
 
@@ -140,6 +115,26 @@ seder.ai/
 ├── docker-compose.yml # Production Docker Compose config
 └── README.md          # Project documentation
 ```
+
+## 🔧 Local Development (Without Docker)
+
+If you prefer to develop without Docker:
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+3. **Open your browser** and navigate to `http://localhost:5173`
 
 ## 🤝 Contributing
 
